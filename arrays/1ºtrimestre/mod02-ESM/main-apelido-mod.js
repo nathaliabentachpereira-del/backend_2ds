@@ -4,6 +4,6 @@
 
 import * as petShop from './main-gato-mod.js'
 
-console.log(petShop.alimentarGato)
-console.log(petShop.banhoGato)
-// tosaGato aqui...
+console.log(petShop.alimentarGato('frajola','fruta'))
+console.log(petShop.banhoGato('sphinx', 'quente'))
+console.log(petShop.tosaGato('vira-lata', 'puppy'))
