@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Iron Echoes | Banda de Rock</title>
+    <style>
+        /* CONFIGURAÇÕES GERAIS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #0b0b0b;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* CABEÇALHO E NAVEGAÇÃO */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(11, 11, 11, 0.95);
+            border-bottom: 2px solid #ff3333;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: #ff3333;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff3333;
+        }
+
+        /* SEÇÃO HERO (DESTAQUE PRINCIPAL) */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(11, 11, 11, 1)), 
+                        url('https://unsplash.com') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 0px #ff3333;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: #cccccc;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* BOTÕES */
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #ff3333;
+            color: #ffffff;
+            border: 2px solid #ff3333;
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: #ff3333;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            margin-left: 15px;
+        }
+
+        .btn-secondary:hover {
+            background-color: #ffffff;
+            color: #0b0b0b;
+        }
+
+        /* CONTEÚDO PRINCIPAL (PRÓXIMOS SHOWS) */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #ff3333;
+            margin: 10px auto 0 auto;
+        }
+
+        .tour-dates {
+            background-color: #161616;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #222;
+        }
+
+        .tour-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            border-bottom: 1px solid #222;
+            transition: background-color 0.3s ease;
+        }
+
+        .tour-row:last-child {
+            border-bottom: none;
+        }
+
+        .tour-row:hover {
+            background-color: #1f1f1f;
+        }
+
+        .tour-date {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ff3333;
+            flex: 1;
+        }
+
+        .tour-venue {
+            flex: 2;
+        }
+
+        .tour-venue h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .tour-venue p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .tour-action {
+            flex: 1;
+            text-align: right;
+        }
+
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.85rem;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background-color: #050505;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #111;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 10px 0 !important;
+            }
+
+            .tour-row {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .tour-action {
+                text-align: center;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">Iron<span>Echoes</span></div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Início</a></li>
+                    <li><a href="/sobre">Sobre</a></li>
+                    <li><a href="#shows">Shows</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- DESTAQUE (HERO) -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The Iron Echoes</h1>
+            <p>Nova turnê mundial "Resonance" 2026</p>
+            <a href="#shows" class="btn btn-primary">Ver Próximos Shows</a>
+            <a href="/sobre" class="btn btn-secondary">Conheça a Banda</a>
+        </div>
+    </section>
+
+    <!-- AGENDA DE SHOWS -->
+    <main class="main-content" id="shows">
+        <h2 class="section-title">Próximos Shows</h2>
+        
+        <div class="tour-dates">
+            <!-- Show 1 -->
+            <div class="tour-row">
+                <div class="tour-date">12 OUT</div>
+                <div class="tour-venue">
+                    <h3>Allianz Parque</h3>
+                    <p>São Paulo, Brasil</p>
+                </div>
+                <div class="tour-action">
+                    <a href="#" class="btn btn-primary btn-sm">Ingressos</a>
+                </div>
+            </div>
+
+            <!-- Show 2 -->
+            <div class="tour-row">
+                <div class="tour-date">15 OUT</div>
+                <div class="tour-venue">
+                    <h3>Lollapalooza</h3>
+                    <p>Buenos Aires, Argentina</p>
+                </div>
+                <div class="tour-action">
+                    <a href="#" class="btn btn-primary btn-sm">Ingressos</a>
+                </div>
+            </div>
+
+            <!-- Show 3 -->
+            <div class="tour-row">
+                <div class="tour-date">22 OUT</div>
+                <div class="tour-venue">
+                    <h3>Rock in Rio</h3>
+                    <p>Rio de Janeiro, Brasil</p>
+                </div>
+                <div class="tour-action">
+                    <a href="#" class="btn btn-primary btn-sm">Esgotado</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>&copy; 2026 The Iron Echoes. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

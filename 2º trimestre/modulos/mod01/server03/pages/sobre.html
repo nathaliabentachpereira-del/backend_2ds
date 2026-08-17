@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós | The Iron Echoes</title>
+    <style>
+        /* CONFIGURAÇÕES GERAIS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #0b0b0b;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* CABEÇALHO E NAVEGAÇÃO */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(11, 11, 11, 0.95);
+            border-bottom: 2px solid #ff3333;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: #ff3333;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff3333;
+        }
+
+        /* SEÇÃO BANNER DA PÁGINA (HERO MENOR) */
+        .page-banner {
+            height: 40vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(11, 11, 11, 1)), 
+                        url('https://unsplash.com') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .page-banner h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 0px #ff3333;
+        }
+
+        /* CONTEÚDO PRINCIPAL */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* HISTÓRIA DA BANDA */
+        .history-section {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .history-text {
+            flex: 1;
+        }
+
+        .history-text h2 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            color: #ff3333;
+            margin-bottom: 20px;
+        }
+
+        .history-text p {
+            color: #cccccc;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .history-image {
+            flex: 1;
+            border: 3px solid #ff3333;
+            box-shadow: 10px 10px 0px #222;
+            border-radius: 4px;
+            overflow: hidden;
+            height: 350px;
+        }
+
+        .history-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* INTEGRANTES */
+        .members-section h2 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .members-section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #ff3333;
+            margin: 10px auto 0 auto;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .member-card {
+            background-color: #161616;
+            border: 1px solid #222;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff3333;
+        }
+
+        .member-img {
+            height: 280px;
+            background-color: #333;
+        }
+
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-info {
+            padding: 20px;
+        }
+
+        .member-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .member-info p {
+            color: #ff3333;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* BOTÃO VOLTAR */
+        .cta-container {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .btn:hover {
+            background-color: #ffffff;
+            color: #0b0b0b;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background-color: #050505;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #111;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .page-banner h1 {
+                font-size: 2.5rem;
+            }
+
+            .history-section {
+                flex-direction: column-reverse;
+                gap: 30px;
+            }
+
+            .history-image {
+                width: 100%;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">Iron<span>Echoes</span></div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Início</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="/#shows">Shows</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- BANNER DA PÁGINA -->
+    <section class="page-banner">
+        <h1>Nossa História</h1>
+    </section>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+        
+        <!-- BIOGRAFIA -->
+        <section class="history-section">
+            <div class="history-text">
+                <h2>The Iron Echoes</h2>
+                <p>Formada em 2018 nas garagens subterrâneas de São Paulo, a banda <strong>The Iron Echoes</strong> nasceu com o propósito de resgatar o peso do Heavy Metal clássico misturado com a energia crua do Rock Alternativo moderno.</p>
+                <p>Após o lançamento do aclamado álbum de estreia <em>"Steel Heart"</em> em 2021, o grupo conquistou espaço nos maiores festivais independentes da América Latina. Conhecidos por apresentações intensas, riffs marcantes e uma cozinha rítmica avassaladora, a banda atualmente prepara sua maior turnê mundial enquanto promove seu novo trabalho de estúdio.</p>
+            </div>
+            <div class="history-image">
+                <img src="https://unsplash.com" alt="Banda tocando ao vivo">
+            </div>
+        </section>
+
+        <!-- INTEGRANTES -->
+        <section class="members-section">
+            <h2>A Formação</h2>
+            
+            <div class="members-grid">
+                <!-- Vocalista -->
+                <div class="member-card">
+                    <div class="member-img">
+                        <img src="https://unsplash.com" alt="Vocalista">
+                    </div>
+                    <div class="member-info">
+                        <h3>Axl Rosewood</h3>
+                        <p>Voz Líder</p>
+                    </div>
+                </div>
+
+                <!-- Guitarrista -->
+                <div class="member-card">
+                    <div class="member-img">
+                        <img src="https://unsplash.com" alt="Guitarrista">
+                    </div>
+                    <div class="member-info">
+                        <h3>Slash Vance</h3>
+                        <p>Guitarra Solo</p>
+                    </div>
+                </div>
+
+                <!-- Baixista -->
+                <div class="member-card">
+                    <div class="member-img">
+                        <img src="https://unsplash.com" alt="Baixista">
+                    </div>
+                    <div class="member-info">
+                        <h3>Rex Thunder</h3>
+                        <p>Baixo</p>
+                    </div>
+                </div>
+
+                <!-- Baterista -->
+                <div class="member-card">
+                    <div class="member-img">
+                        <img src="https://unsplash.com" alt="Baterista">
