@@ -1,10 +1,11 @@
 // importação moderna com ESM (import)
 import express from 'express'
 
-const app = express()
+const app = express() //Instanciar Express
 
 app.get('/',(req, res) => {
-    res.send('Home Ok!')
+    res.send(`<h3>Página inicial <h/3>\n
+        <p>Loja especializada em roupas</p>`)
 })
 app.get('/',(req, res) => {
     res.send('Minha roupa nova....!')
